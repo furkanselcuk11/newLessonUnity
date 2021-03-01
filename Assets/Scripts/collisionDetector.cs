@@ -20,5 +20,7 @@ public class collisionDetector : MonoBehaviour
     void OnCollisionEnter(Collision obj)
     {
         Debug.Log("OnCollisionEnter çarpılma gerçekleşti...");
+        Destroy(obj.gameObject);    // Kodun bağlı olduğu nesneyi yok eder...
+        Destroy(this.gameObject);   // Çarpılan nesneyi yok eder...
     }
 }
