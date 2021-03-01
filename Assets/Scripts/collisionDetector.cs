@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class collisionDetector : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject explosion;
     void Start()
     {
         
@@ -20,7 +20,9 @@ public class collisionDetector : MonoBehaviour
     void OnCollisionEnter(Collision obj)
     {
         Debug.Log("OnCollisionEnter çarpılma gerçekleşti...");
-        Destroy(obj.gameObject);    // Kodun bağlı olduğu nesneyi yok eder...
-        Destroy(this.gameObject);   // Çarpılan nesneyi yok eder...
+        Destroy(obj.gameObject);    // Çarpılan nesneyi yok eder...
+        Destroy(this.gameObject);   // Kodun bağlı olduğu nesneyi yok eder...
+        // Patlama efekti ekler ve konumunu belirler...
+        Instantiate(explosion, this.gameObject.transform.position, this.gameObject.transform.rotation);
     }
 }
