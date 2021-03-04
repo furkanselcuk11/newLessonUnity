@@ -13,7 +13,7 @@ public class ballController : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             Vector3 pos = new Vector3(Random.Range(-10, 10), 8, Random.Range(-10, 10));
             //Instantiate(go, transform.position, transform.rotation);    // nesnenin bulunduğu pozisyona nesne oluşturulur

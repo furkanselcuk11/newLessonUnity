@@ -14,7 +14,7 @@ public class cubeScripts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   // Tuşa basıldığında yapılacak işlem
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.J))
         {
             // Kuvvet uygular
             rb.AddForce(new Vector3(0, 20.5f, 0));
