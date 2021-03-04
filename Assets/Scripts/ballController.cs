@@ -15,7 +15,7 @@ public class ballController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            Vector3 pos = new Vector3(Random.Range(-10, 10), 8, Random.Range(-10, 10));
+            Vector3 pos = new Vector3(Random.Range(-20, 20), 8, Random.Range(-20, 20));
             //Instantiate(go, transform.position, transform.rotation);    // nesnenin bulunduğu pozisyona nesne oluşturulur
             Instantiate(go, pos, transform.rotation);   // random (pos) verilen değerlerde nesne oluşturulur
         }
