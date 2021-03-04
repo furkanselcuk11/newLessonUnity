@@ -16,6 +16,7 @@ public class BallOnTriggerEnterControl : MonoBehaviour
     }
 
     // Temas eden objeyi belirler
+    // Objelerin belirli bir bölgeden geçmeleri veya belirli bir bölgeye girip girmediklerinin kontrolü 
     void OnTriggerEnter(Collider go)
     {
         Debug.Log("Kutu içerisine giren obje:"+go.name);
