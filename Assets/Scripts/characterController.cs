@@ -7,7 +7,8 @@ public class characterController : MonoBehaviour
     public float characterSpeed = 10f;
     void Start()
     {
-        
+        // Fare imlecini gizleme
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
         void Update()
