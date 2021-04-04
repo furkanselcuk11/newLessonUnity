@@ -121,6 +121,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &475301278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475301279}
+  m_Layer: 0
+  m_Name: Checker
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &475301279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475301278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2103174848}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &669008316
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c269bbc4eecab604a9bc5b9728da0395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sens: 85
+  sens: 180
   body: {fileID: 2103174848}
 --- !u!1 &1080151702
 GameObject:
@@ -231,7 +261,7 @@ GameObject:
   - component: {fileID: 1080151705}
   - component: {fileID: 1080151704}
   - component: {fileID: 1080151703}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,6 +445,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2103174848}
   - component: {fileID: 2103174847}
+  - component: {fileID: 2103174849}
   m_Layer: 0
   m_Name: FPSControllerPlayer
   m_TagString: Untagged
@@ -452,6 +483,27 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 669008317}
+  - {fileID: 475301279}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2103174849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103174846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 336f4c44cfc85a442a0c80c0d9261748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ground: {fileID: 475301279}
+  distance: 0.3
+  speed: 5
+  JumpHeight: 1
+  gravity: -9.8
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
