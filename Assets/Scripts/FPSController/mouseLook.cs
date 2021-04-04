@@ -10,8 +10,19 @@ public class mouseLook : MonoBehaviour
 
     float xRot = 0f;
 
+    public Transform leaner;
+    public float zRot;
+    bool isRotating;
+
+    private void Start()
+    {
+        Cursor.visible = false; // Mouse gizler
+        Cursor.lockState = CursorLockMode.Locked;   // Mouse ekranın ortasına kitlenir
+    }
+
     private void Update()
     {
+        #region Camera Movement
         float rotX = Input.GetAxisRaw("Mouse X") * sens * Time.deltaTime;
         float rotY = Input.GetAxisRaw("Mouse Y") * sens * Time.deltaTime;
 
@@ -20,6 +31,33 @@ public class mouseLook : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
 
         body.Rotate(Vector3.up * rotX);
+        #endregion
 
+        #region Camera Lean
+        if (Input.GetKey(KeyCode.E))
+        {
+            zRot = Mathf.Lerp(zRot,-20.0f, 5f*Time.deltaTime);
+            // Lerp ile yumuşak geçiş yap ve -20'ye her saniye 5er 5er azalt
+            isRotating = true;
+        }
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            zRot = Mathf.Lerp(zRot,20.0f, 5f* Time.deltaTime);
+            isRotating = true;
+        }
+
+        if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E))
+        {
+            isRotating = false;
+        } 
+
+        if(!isRotating) // (isRotating == false)
+        {
+            zRot = Mathf.Lerp(zRot, 0.0f, 5f* Time.deltaTime);
+        }
+
+        leaner.localRotation = Quaternion.Euler(0, 0, zRot);
+        #endregion
     }
 }

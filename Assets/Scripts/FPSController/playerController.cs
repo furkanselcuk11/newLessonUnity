@@ -14,7 +14,7 @@ public class playerController : MonoBehaviour
     public float speed;
     public float JumpHeight;
     public float gravity;
-
+    
     public LayerMask mask;
 
     private void Start()
@@ -28,7 +28,8 @@ public class playerController : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * horizontal + transform.forward * vertical;
-        controller.Move(move*speed*Time.deltaTime);
+        controller.Move(move * speed * Time.deltaTime);       
+        
         #endregion
 
         #region Jump
