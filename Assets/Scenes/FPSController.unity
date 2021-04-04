@@ -1012,7 +1012,7 @@ MonoBehaviour:
   distance: 0.3
   speed: 5
   JumpHeight: 1
-  gravity: -9.8
+  gravity: -8
   mask:
     serializedVersion: 2
     m_Bits: 512
