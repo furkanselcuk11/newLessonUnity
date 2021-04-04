@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 669008319}
   - component: {fileID: 669008318}
   - component: {fileID: 669008320}
+  - component: {fileID: 669008321}
   m_Layer: 0
   m_Name: FPSCamera
   m_TagString: MainCamera
@@ -202,7 +203,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.4392157, g: 0.4392157, b: 0.4392157, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -249,6 +250,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sens: 180
   body: {fileID: 2103174848}
+--- !u!45 &669008321
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669008316}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: bf1bf92a3ce592e40b898be6c21cc2fa, type: 2}
 --- !u!1 &1080151702
 GameObject:
   m_ObjectHideFlags: 0
