@@ -5,8 +5,12 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     CharacterController controller;
+
+    AudioSource source; // Ses kaynağı
+
     Vector3 velocity;
     bool isGrounded;
+    bool isMoving;
 
     public Transform ground;
     public float distance = 0.3f;
@@ -16,13 +20,18 @@ public class playerController : MonoBehaviour
     public float gravity;
 
     public float originalHeight;
-    public float crouchHeight; 
+    public float crouchHeight;
+
+    public float timeBetweenSteps;  // Adımlar arası kaç sn olacağı
+    float timer;    // Ayak seslerimin aralığı
+    public AudioClip[] stepSounds;
     
-    public LayerMask mask;  // Seçtiimiz zeminlerde zıplamsını sağlar
+    public LayerMask mask;  // Seçtiğimiz zeminlerde zıplamsını sağlar
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        source = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -32,7 +41,35 @@ public class playerController : MonoBehaviour
 
         Vector3 move = transform.right * horizontal + transform.forward * vertical;
         controller.Move(move * speed * Time.deltaTime); //  Karakter hıza göre hareket etmesini sağlar       
-        
+
+        #endregion
+
+        #region Basic Footsteps
+        if(horizontal !=0 || vertical != 0)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
+
+        if (isMoving)
+        {
+            timer -= Time.deltaTime;
+
+            if (timer <= 0)
+            {
+                timer = timeBetweenSteps;   // Belirlenen süre içine ses çalsın
+                source.clip = stepSounds[Random.Range(0, stepSounds.Length)];
+                source.pitch = Random.Range(0.85f, 1.15f);  // Ses incelik ve kalınlık aralğı
+                source.Play();
+            }            
+        }
+        else
+        {
+            timer = timeBetweenSteps;
+        }
         #endregion
 
         #region Jump
@@ -58,12 +95,14 @@ public class playerController : MonoBehaviour
             controller.height = crouchHeight;
             speed = 2.0f;
             JumpHeight = 0f;
+            timeBetweenSteps = 1.0f;
         }
         if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             controller.height = originalHeight;
             speed = 5.0f;
             JumpHeight = 2.0f;
+            timeBetweenSteps = 0.4f;
         }
         #endregion
 
@@ -71,11 +110,15 @@ public class playerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             speed = 10.0f;
+            timeBetweenSteps=0.2f;
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 5.0f;
+            timeBetweenSteps = 0.4f;
         }
         #endregion
+
+
     }
 }
