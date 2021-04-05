@@ -14,6 +14,9 @@ public class playerController : MonoBehaviour
     public float speed;
     public float JumpHeight;
     public float gravity;
+
+    public float originalHeight;
+    public float crouchHeight; 
     
     public LayerMask mask;  // Seçtiimiz zeminlerde zıplamsını sağlar
 
@@ -47,6 +50,32 @@ public class playerController : MonoBehaviour
         }
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+        #endregion
+
+        #region Basic Cruch
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            controller.height = crouchHeight;
+            speed = 2.0f;
+            JumpHeight = 0f;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            controller.height = originalHeight;
+            speed = 5.0f;
+            JumpHeight = 2.0f;
+        }
+        #endregion
+
+        #region Basic Runnig
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = 10.0f;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = 5.0f;
+        }
         #endregion
     }
 }
