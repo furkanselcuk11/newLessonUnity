@@ -14,6 +14,8 @@ public class mouseLook : MonoBehaviour
     public float zRot;
     bool isRotating;
 
+    public float smooting;
+    float currentRot;
     private void Start()
     {
         Cursor.visible = false; // Mouse gizler
@@ -28,8 +30,11 @@ public class mouseLook : MonoBehaviour
 
         xRot -= rotY;   //  Kamera sabit kalmaması için
         xRot = Mathf.Clamp(xRot, -80f, 80f);
-        transform.localRotation = Quaternion.Euler(xRot, 0f, 0f);
 
+        currentRot += rotX;
+        currentRot = Mathf.Lerp(currentRot, 0, smooting * Time.deltaTime);
+
+        transform.localRotation = Quaternion.Euler(xRot, 0f, currentRot); // Kamera sağa-sola dönüş
         body.Rotate(Vector3.up * rotX);
         #endregion
 

@@ -226,7 +226,7 @@ GameObject:
   m_Layer: 0
   m_Name: Linear
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -466,10 +466,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c269bbc4eecab604a9bc5b9728da0395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sens: 180
+  sens: 120
   body: {fileID: 2103174848}
   leaner: {fileID: 63055450}
   zRot: 0
+  smooting: 50
 --- !u!45 &669008321
 Skybox:
   m_ObjectHideFlags: 0
